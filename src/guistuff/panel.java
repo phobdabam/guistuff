@@ -11,7 +11,8 @@ import javax.swing.JPanel;
 public class panel extends JPanel implements ActionListener {
 	static int x = 50,
 	    y = 50;
-	int move = 2;
+	int moveX = 10,
+		moveY = 10;
 	Graphics p;
 	Timer panTime = new Timer(10, this);
 	public panel() {
@@ -25,18 +26,31 @@ public class panel extends JPanel implements ActionListener {
 		panTime.start();
 	}
 	public void pencil (int xpos, int ypos) {
-		x = xpos;
-		y = ypos;
+		//redraws the circle where the mouse clicked
+		x = xpos - 50;
+		y = ypos - 50;
+		
+		//changes the movement to go towards where the mouse clicked
+//		moveX = (xpos - x - 50);
+//		moveY = (ypos - y - 50);
+		
+		
 		repaint();
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+		// what happens on click
 		
-		x = x + move;
+		//ball movement
+		x = x + moveX;
+		y = y + moveY;
 		
-		if (x == this.getWidth()-100) {
-			move = -2;
+		//bounce
+		if (x >= this.getWidth() - 100 || x <= 0) {
+			moveX *= -1;
+		}
+		if (y >= this.getHeight() - 100 || y <= 0) {
+			moveY *= -1; 
 		}
 		repaint();
 	}

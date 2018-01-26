@@ -9,7 +9,9 @@ public class main {
 		gui thisFrame = new gui(x, y);
 		panel thisPanel = new panel();
 		listname thisListener = new listname(thisPanel);
+		buttonA firstButton = new buttonA("Push it");
 		thisFrame.add(thisPanel, BorderLayout.CENTER);
+		thisFrame.add(firstButton,BorderLayout.SOUTH);
 		thisPanel.addMouseListener(thisListener);
 	}
 	
